@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.left-container::before {
+    top: 0;
+    left: 0;
+    background: url('../assets/vector-top.png');
+    position: absolute;
+}
+.left-container::after {
+    bottom: 0;
+    right: 0;
+    background: url('../assets/vector-bottom.png');
+    position: absolute;
+}

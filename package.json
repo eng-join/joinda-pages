@@ -1,0 +1,10 @@
+{"name": "joinda",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "npx tailwindcss -i ./src/input.css -o ./src/output.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.12"
+  }
+}
