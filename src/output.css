@@ -568,6 +568,10 @@ video {
   margin-bottom: 1.75rem;
 }
 
+.mb-12 {
+  margin-bottom: 3rem;
+}
+
 .mb-4 {
   margin-bottom: 1rem;
 }
@@ -592,16 +596,16 @@ video {
   margin-top: 60px;
 }
 
-.mb-12 {
-  margin-bottom: 3rem;
-}
-
 .flex {
   display: flex;
 }
 
 .hidden {
   display: none;
+}
+
+.aspect-square {
+  aspect-ratio: 1 / 1;
 }
 
 .h-0\.5 {
@@ -645,6 +649,14 @@ video {
   width: 100%;
 }
 
+.w-\[24px\] {
+  width: 24px;
+}
+
+.w-\[240px\] {
+  width: 240px;
+}
+
 .max-w-\[35ch\] {
   max-width: 35ch;
 }
@@ -657,8 +669,20 @@ video {
   max-width: 942px;
 }
 
+.flex-1 {
+  flex: 1 1 0%;
+}
+
+.flex-shrink {
+  flex-shrink: 1;
+}
+
 .flex-col {
   flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
 }
 
 .items-center {
@@ -683,6 +707,11 @@ video {
 
 .gap-\[14px\] {
   gap: 14px;
+}
+
+.gap-x-10 {
+  -moz-column-gap: 2.5rem;
+       column-gap: 2.5rem;
 }
 
 .rounded-full {
@@ -731,6 +760,14 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.bg-\[url\(\'\.\.\/assets\/background\.png\'\)\] {
+  background-image: url('../assets/background.png');
+}
+
+.bg-center {
+  background-position: center;
+}
+
 .px-3 {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -744,6 +781,11 @@ video {
 .px-\[15px\] {
   padding-left: 15px;
   padding-right: 15px;
+}
+
+.py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .text-center {
