@@ -3,14 +3,23 @@
 @tailwind utilities;
 
 .left-container::before {
+    content: '';
     top: 0;
     left: 0;
     background: url('../assets/vector-top.png');
+    background-position: bottom right;
     position: absolute;
+    z-index: 10;
+    display: block;
+    width: 120px;
+    height: 215px;
 }
 .left-container::after {
+    content: '';
     bottom: 0;
     right: 0;
     background: url('../assets/vector-bottom.png');
     position: absolute;
+    width: 136px;
+    height: 243px;
 }
