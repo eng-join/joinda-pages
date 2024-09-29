@@ -257,7 +257,7 @@
                 <label for="remember">Remember this device</label>
               </div>
               <button type="submit" class="rounded-full h-16 md:h-[72px] w-[calc(100%_-_68px)] mx-auto border border-[#333] bg-secondaryGrey text-center text-white text-[22px] mt-16 md:mt-[113px] font-semibold hover:opacity-80 active:opacity-100 transition duration-200">Log In</button>
-              <p class="mt-[25px] text-[15px] text-center text-[#FCFCFC] mx-auto">Don&apos;t have an account? <button type="button" class="text-[#8AE5CF] font-semibold">Create Account</button></p>
+              <p class="mt-[25px] text-[15px] text-center text-[#FCFCFC] mx-auto">Don&apos;t have an account? <button type="button" id="openAlreadySignUpModal" class="text-[#8AE5CF] font-semibold">Create Account</button></p>
             </form>
           </div>
   
@@ -295,7 +295,7 @@
                   </select>
                 </div>
                 <button id="nextStep" type="button" class="rounded-full mx-auto w-[calc(100%_-_68px)] h-16 md:h-[72px] border border-[#333] bg-secondaryGrey text-center text-white text-[22px] mt-11 font-semibold hover:opacity-80 active:opacity-100 transition duration-200">Next</button>
-                <p class="mt-[25px] text-[15px] text-center text-[#FCFCFC] mx-auto">Already have an account? <button type="button" class="text-[#8AE5CF] font-semibold">Log In</button></p>
+                <p class="mt-[25px] text-[15px] text-center text-[#FCFCFC] mx-auto">Already have an account? <button type="button" id="openAlreadyLoginModal" class="text-[#8AE5CF] font-semibold">Log In</button></p>
               </div>
             </div>
     
@@ -371,6 +371,8 @@
     <script>
       const openLoginModalButton = document.getElementById("openLoginModal");
       const openSignUpModalButton = document.getElementById("openSignUpModal");
+      const openAlreadyLoginModalButton = document.getElementById("openAlreadyLoginModal");
+      const openAlreadySignUpModalButton = document.getElementById("openAlreadySignUpModal");
       const step2 = document.getElementById("step2");
       const modalBackdrop = document.getElementById("modalBackdrop");
       const modalTitle = document.getElementById("modalTitle");
@@ -397,7 +399,7 @@
       const eyeSlashIcon3 = document.getElementById('eyeSlashIcon3');
 
       // Open Login modal
-      openLoginModalButton.addEventListener("click", () => {
+      function openLoginModal () {
         modalTitle.textContent = "Login";
         signUpIndicator.classList.add("hidden");
         loginIndicator.classList.remove("hidden");
@@ -409,10 +411,13 @@
         modalBackdrop.classList.add("flex");
         closeModalLogin.classList.remove("hidden");
         closeModalSignUp.classList.add("hidden");
-      });
+      };
+
+      openLoginModalButton.addEventListener("click", openLoginModal);
+      openAlreadyLoginModalButton.addEventListener("click", openLoginModal);
 
       // Open Sign Up modal with stepper
-      openSignUpModalButton.addEventListener("click", () => {
+      function openSignUpModal () {
         modalTitle.textContent = "Create your Account";
         step2.classList.add("bg-opacity-30");
         loginIndicator.classList.add("hidden");
@@ -425,7 +430,9 @@
         modalBackdrop.classList.add("flex");
         closeModalSignUp.classList.remove("hidden");
         closeModalLogin.classList.add("hidden");
-      });
+      }
+      openSignUpModalButton.addEventListener("click", openSignUpModal);
+      openAlreadySignUpModalButton.addEventListener("click", openSignUpModal);
 
       // Move to next step in Sign Up
       nextStepButton.addEventListener("click", () => {
