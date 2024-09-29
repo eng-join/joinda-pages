@@ -2,6 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Scrollbar track */
+::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  /* Scrollbar thumb */
+  ::-webkit-scrollbar-thumb {
+    background-color: #8AE5CF;
+    border-radius: 10px;
+  }
+
+  /* Scrollbar thumb hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #8AE5CF50;
+  }
+
+  /* Scrollbar track */
+  ::-webkit-scrollbar-track {
+    background-color: #04141D;
+  }
+
 .left-container::before {
     content: '';
     top: 0;
@@ -9,11 +30,10 @@
     background: url('../assets/vector-top.png');
     background-position: bottom right;
     position: absolute;
-    z-index: 10;
-    display: block;
     width: 120px;
     height: 215px;
 }
+
 .left-container::after {
     content: '';
     bottom: 0;
@@ -22,4 +42,16 @@
     position: absolute;
     width: 136px;
     height: 243px;
+}
+
+#modalTitle {
+    background: linear-gradient(90deg, #C8C8C8 4.29%, #878787 97.5%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+}
+
+input {
+    color: white !important;
 }

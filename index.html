@@ -5,7 +5,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Joinda - Community</title>
     <link rel="stylesheet" href="./output.css" />
-    <link rel="shortcut icon" href="../assets/favicon.png" type="image/png" />
+    <link rel="shortcut icon" href="./assets/favicon.png" type="image/png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              bodyText: "#6B7280",
+              primaryBg: "#04141D",
+              secondaryGrey: "#778692",
+              secondary: "#8AE5CF",
+              footerBg: "#030E14",
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      /* Scrollbar track */
+      ::-webkit-scrollbar {
+          width: 8px;
+        }
+
+        /* Scrollbar thumb */
+        ::-webkit-scrollbar-thumb {
+          background-color: #8AE5CF;
+          border-radius: 10px;
+        }
+
+        /* Scrollbar thumb hover */
+        ::-webkit-scrollbar-thumb:hover {
+          background-color: #8AE5CF50;
+        }
+
+        /* Scrollbar track */
+        ::-webkit-scrollbar-track {
+          background-color: #04141D;
+        }
+      .left-container::before {
+          content: '';
+          top: 0;
+          left: 0;
+          background: url('./assets/vector-top.png');
+          background-position: bottom right;
+          position: absolute;
+          width: 120px;
+          height: 215px;
+      }
+
+      .left-container::after {
+          content: '';
+          bottom: 0;
+          right: 0;
+          background: url('./assets/vector-bottom.png');
+          position: absolute;
+          width: 136px;
+          height: 243px;
+      }
+
+      #modalTitle {
+          background: linear-gradient(90deg, #C8C8C8 4.29%, #878787 97.5%);
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          text-fill-color: transparent;
+      }
+    </style>
   </head>
   <body>
     <main class="bg-primaryBg min-h-[calc(100vh_-_60px)] flex">
@@ -14,7 +80,7 @@
           class="mt-[60px] mb-8 mx-auto flex flex-col w-fit justify-center items-center"
         >
           <img
-            src="../assets/joinda-logo.png"
+            src="./assets/joinda-logo.png"
             class="w-[100px] h-auto"
             alt="Joinda Logo"
           />
@@ -26,13 +92,13 @@
           <button
             class="bg-white text-[#333] font-medium text-[22px] rounded-full flex items-center justify-center w-full h-14 gap-4 hover:opacity-80 active:opacity-100 transition duration-200 mb-4"
           >
-            <img src="../assets/google.png" alt="" />
+            <img src="./assets/google.png" alt="" />
             Sign up with Google
           </button>
           <button
             class="bg-white text-[#333] font-medium text-[22px] rounded-full flex items-center justify-center w-full h-14 gap-4 hover:opacity-80 active:opacity-100 transition duration-200 mb-7"
           >
-            <img src="../assets/apple.png" alt="" />
+            <img src="./assets/apple.png" alt="" />
             Sign up with Apple
           </button>
           <div class="flex w-full gap-6 items-center">
@@ -68,23 +134,23 @@
           <button
             class="border border-[#778692] rounded-md h-[50px] flex items-center px-3 hover:scale-90 active:scale-100 transition duration-200"
           >
-            <img src="../assets/google-play.png" alt="Get it on Google Play" />
+            <img src="./assets/google-play.png" alt="Get it on Google Play" />
           </button>
           <button
             class="border border-[#778692] rounded-md h-[50px] flex items-center px-[15px] hover:scale-90 active:scale-100 transition duration-200"
           >
             <img
-              src="../assets/app-store.png"
+              src="./assets/app-store.png"
               alt="Download on the App Store"
             />
           </button>
         </div>
       </div>
       <div
-        class="hidden md:flex justify-center items-center w-1/2 bg-[url('../assets/background.png')] bg-center"
+        class="hidden md:flex justify-center items-center w-1/2 bg-[url('./assets/background.png')] bg-center"
       >
         <img
-          src="../assets/joinda-logo.png"
+          src="./assets/joinda-logo.png"
           class="w-[240px] h-auto aspect-square"
           alt="Joinda Logo"
         />
@@ -122,17 +188,17 @@
             id="closeModalLogin"
             class="hidden absolute top-[37.5px] right-[37.5px] hover:scale-90 active:scale-100"
           >
-            <img src="../assets/x-icon.png" alt="X" />
+            <img src="./assets/x-icon.png" alt="X" />
           </button>
           <button
             id="closeModalSignUp"
             class="hidden absolute top-[37.5px] right-[37.5px] hover:scale-90 active:scale-100"
           >
-            <img src="../assets/x-icon.png" alt="X" />
+            <img src="./assets/x-icon.png" alt="X" />
           </button>
           <!-- Modal header -->
           <img
-            src="../assets/joinda-icon.png"
+            src="./assets/joinda-icon.png"
             alt="Joinda Icon"
             class="mx-auto"
           />
@@ -181,7 +247,7 @@
                     type="button"
                     class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 transition duration-200"
                   >
-                    <img src="../assets/eye.png" alt="Show" id="eyeIcon1">
+                    <img src="./assets/eye.png" alt="Show" id="eyeIcon1">
                   </button>
                 </div>
               </div>
@@ -248,7 +314,7 @@
                     type="button"
                     class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 transition duration-200"
                   >
-                    <img src="../assets/eye.png" alt="Show" id="eyeIcon2">
+                    <img src="./assets/eye.png" alt="Show" id="eyeIcon2">
                   </button>
                 </div>
               </div>
@@ -266,7 +332,7 @@
                     type="button"
                     class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 transition duration-200"
                   >
-                    <img src="../assets/eye.png" alt="Show" id="eyeIcon3">
+                    <img src="./assets/eye.png" alt="Show" id="eyeIcon3">
                   </button>
                 </div>
               </div>
@@ -274,13 +340,13 @@
                 <!-- Password Criteria List -->
                 <ul class="flex flex-col md:flex-row gap-3">
                   <li id="uppercaseCriteria" class="flex items-center justify-start md:justify-center">
-                    <img id="uppercaseIcon" class="mr-1" src="../assets/tick-circle.png" alt="Uppercase"> 1 uppercase letter
+                    <img id="uppercaseIcon" class="mr-1" src="./assets/tick-circle.png" alt="Uppercase"> 1 uppercase letter
                   </li>
                   <li id="specialCharacterCriteria" class="flex items-center justify-start md:justify-center">
-                    <img id="specialCharIcon" class="mr-1" src="../assets/tick-circle.png" alt="Special Character"> 1 special character
+                    <img id="specialCharIcon" class="mr-1" src="./assets/tick-circle.png" alt="Special Character"> 1 special character
                   </li>
                   <li id="lengthCriteria" class="flex items-center justify-start md:justify-center">
-                    <img id="lengthIcon" class="mr-1" src="../assets/tick-circle.png" alt="Length"> 8 characters long
+                    <img id="lengthIcon" class="mr-1" src="./assets/tick-circle.png" alt="Length"> 8 characters long
                   </li>
                 </ul>
                 <p class="text-bodyText text-[15px] text-center max-w-[35ch] mx-auto mt-[50px]">
@@ -292,7 +358,7 @@
               </div>
               <div class="flex flex-col-reverse sm:flex-row gap-4 md:gap-8 mt-8 mb-14 w-full md:w-[calc(100%_-_68px)] mx-auto">
                 <button type="button" id="previousStepButton" class="flex items-center justify-center rounded-full w-full h-16 md:h-[72px] border border-secondaryGrey bg-transparent text-center text-secondaryGrey text-[22px] font-semibold hover:opacity-80 active:opacity-100 transition duration-200">
-                  <img src="../assets/arrow-right.png" alt="Right Arrow">  
+                  <img src="./assets/arrow-right.png" alt="Right Arrow">  
                   Go back
                 </button>
                 <button type="submit" class="rounded-full w-full h-16 md:h-[72px] border border-[#333] bg-secondaryGrey text-center text-white text-[22px] font-semibold hover:opacity-80 active:opacity-100 transition duration-200">Create Account</button>
@@ -398,10 +464,10 @@
           // Toggle the type attribute
           if (passwordInput.type === 'password') {
             passwordInput.type = 'text';
-            eyeIcon.src = '../assets/eye-slash.png';
+            eyeIcon.src = './assets/eye-slash.png';
           } else {
             passwordInput.type = 'password';
-            eyeIcon.src = '../assets/eye.png';
+            eyeIcon.src = './assets/eye.png';
           }
         });
       }
@@ -431,23 +497,23 @@
 
         // Check if password contains at least one uppercase letter
         if (uppercaseRegex.test(password)) {
-          uppercaseIcon.src = '../assets/tick-circle-green.png';  // Change to green icon
+          uppercaseIcon.src = './assets/tick-circle-green.png';  // Change to green icon
         } else {
-          uppercaseIcon.src = '../assets/tick-circle.png';  // Revert to initial icon
+          uppercaseIcon.src = './assets/tick-circle.png';  // Revert to initial icon
         }
 
         // Check if password contains at least one special character
         if (specialCharRegex.test(password)) {
-          specialCharIcon.src = '../assets/tick-circle-green.png';  // Change to green icon
+          specialCharIcon.src = './assets/tick-circle-green.png';  // Change to green icon
         } else {
-          specialCharIcon.src = '../assets/tick-circle.png';  // Revert to initial icon
+          specialCharIcon.src = './assets/tick-circle.png';  // Revert to initial icon
         }
 
         // Check if password length is at least 8 characters
         if (password.length >= 8) {
-          lengthIcon.src = '../assets/tick-circle-green.png';  // Change to green icon
+          lengthIcon.src = './assets/tick-circle-green.png';  // Change to green icon
         } else {
-          lengthIcon.src = '../assets/tick-circle.png';  // Revert to initial icon
+          lengthIcon.src = './assets/tick-circle.png';  // Revert to initial icon
         }
       });
 
