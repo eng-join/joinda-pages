@@ -1,92 +1,291 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Joinda - Community</title>
-    <link rel="stylesheet" href="./output.css" />
+    <style>
+      /* General Styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #333;
+  background-color: #f4f4f4;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Main Container */
+.main-container {
+  display: flex;
+  min-height: calc(100vh - 60px);
+  background-color: #04141D;
+}
+
+/* Left Container */
+.left-container {
+  width: 100%;
+  max-width: 50%;
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.left-container::before {
+  content: '';
+  top: 0;
+  left: 0;
+  background: url('../assets/vector-top.png');
+  background-position: bottom right;
+  position: absolute;
+  z-index: 10;
+  display: block;
+  width: 120px;
+  height: 215px;
+}
+
+.left-container::after {
+  content: '';
+  bottom: 0;
+  right: 0;
+  background: url('../assets/vector-bottom.png');
+  position: absolute;
+  width: 136px;
+  height: 243px;
+}
+
+.logo-container {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.logo {
+  width: 100px;
+}
+
+.description {
+  font-size: 1.25rem;
+  color: #666;
+  margin-top: 10px;
+}
+
+.form-container {
+  max-width: 528px;
+  margin: 0 auto;
+}
+
+.signup-button,
+.create-account-button,
+.signin-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 56px;
+  border-radius: 30px;
+  font-size: 22px;
+  font-weight: 500;
+  transition: opacity 0.2s ease;
+  margin-bottom: 15px;
+}
+
+.signup-button {
+  background-color: white;
+  color: #333;
+  border: none;
+}
+
+.signup-button:hover,
+.create-account-button:hover,
+.signin-button:hover {
+  opacity: 0.8;
+}
+
+.signup-button img,
+.create-account-button img {
+  margin-right: 10px;
+}
+
+.create-account-button {
+  background-color: #6b7280;
+  color: white;
+  margin-top: 25px;
+}
+
+.divider-container {
+  display: flex;
+  align-items: center;
+  margin: 30px 0;
+}
+
+.divider {
+  flex-grow: 1;
+  height: 1px;
+  background-color: rgba(51, 51, 51, 0.25);
+}
+
+.divider-text {
+  margin: 0 10px;
+  color: #666;
+  font-size: 22px;
+}
+
+.terms-text {
+  text-align: center;
+  font-size: 15px;
+  color: #666;
+  margin-top: 20px;
+}
+
+.highlight {
+  color: #007bff;
+  font-weight: 600;
+}
+
+.signin-container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.signin-text {
+  font-size: 18px;
+  color: white;
+  margin-bottom: 15px;
+}
+
+.signin-button {
+  border: 2px solid #6b7280;
+  background-color: transparent;
+  color: #6b7280;
+}
+
+.store-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 55px;
+  gap: 14px;
+}
+
+.store-button {
+  border: 1px solid #778692;
+  border-radius: 5px;
+  padding: 0 15px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.store-button:hover {
+  transform: scale(0.9);
+}
+
+/* Right Container */
+.right-container {
+  width: 50%;
+  background-image: url('../assets/background.png');
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.large-logo {
+  width: 240px;
+  height: auto;
+}
+
+/* Footer */
+.footer {
+  background-color: #333;
+  min-height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-content {
+  max-width: 942px;
+  margin: 0 auto;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 10px;
+}
+
+.footer-links li a {
+  font-size: 14px;
+  color: #f4f4f4;
+}
+
+    </style>
   </head>
   <body>
-    <main class="bg-primaryBg min-h-[calc(100vh_-_60px)] flex">
-      <div class="w-full md:w-1/2 left-container relative">
-        <div
-          class="mt-[60px] mb-8 mx-auto flex flex-col w-fit justify-center items-center"
-        >
-          <img
-            src="../assets/joinda-logo.png"
-            class="w-[100px] h-auto"
-            alt="Joinda Logo"
-          />
-          <p class="text-bodyText text-center text-xl">
-            Step into the Joinda universe
-          </p>
+    <main class="main-container">
+      <div class="left-container">
+        <div class="logo-container">
+          <img src="../assets/joinda-logo.png" class="logo" alt="Joinda Logo" />
+          <p class="description">Step into the Joinda universe</p>
         </div>
-        <div class="w-full max-w-[528px] mx-auto px-4">
-          <button
-            class="bg-white text-[#333] font-medium text-[22px] rounded-full flex items-center justify-center w-full h-14 gap-4 hover:opacity-80 active:opacity-100 transition duration-200 mb-4"
-          >
+        <div class="form-container">
+          <button class="signup-button">
             <img src="../assets/google.png" alt="" />
             Sign up with Google
           </button>
-          <button
-            class="bg-white text-[#333] font-medium text-[22px] rounded-full flex items-center justify-center w-full h-14 gap-4 hover:opacity-80 active:opacity-100 transition duration-200 mb-7"
-          >
+          <button class="signup-button">
             <img src="../assets/apple.png" alt="" />
             Sign up with Apple
           </button>
-          <div class="flex w-full gap-6 items-center">
-            <div class="bg-bodyText/25 h-0.5 w-full"></div>
-            <div class="text-bodyText text-2xl">OR</div>
-            <div class="bg-bodyText/25 h-0.5 w-full"></div>
+          <div class="divider-container">
+            <div class="divider"></div>
+            <div class="divider-text">OR</div>
+            <div class="divider"></div>
           </div>
-          <button
-            class="bg-secondaryGrey text-white font-medium text-[22px] rounded-full flex items-center justify-center w-full h-14 gap-4 hover:opacity-80 active:opacity-100 transition duration-200 my-7"
-          >
-            Create Account
-          </button>
-          <p class="text-bodyText text-[15px] text-center max-w-[35ch] mx-auto">
+          <button class="create-account-button">Create Account</button>
+          <p class="terms-text">
             By creating an account you accept, Joinda
-            <span class="text-secondary font-semibold"> Terms of Use </span>
-            and
-            <span class="text-secondary font-semibold"> Privacy Policy </span>
+            <span class="highlight">Terms of Use</span> and
+            <span class="highlight">Privacy Policy</span>
           </p>
         </div>
-        <div class="mt-12 w-full max-w-[528px] mx-auto px-4">
-            <p class="text-white font-semibold text-center mb-8">Already have an account?</p>
-            <button
-            class="border border-secondaryGrey text-secondaryGrey font-medium text-[22px] rounded-full flex items-center justify-center w-full h-14 gap-4 hover:opacity-80 active:opacity-100 transition duration-200 my-7"
-          >
-            Sign In
+        <div class="signin-container">
+          <p class="signin-text">Already have an account?</p>
+          <button class="signin-button">Sign In</button>
+        </div>
+        <div class="store-buttons">
+          <button class="store-button">
+            <img src="../assets/google-play.png" alt="Get it on Google Play" />
+          </button>
+          <button class="store-button">
+            <img src="../assets/app-store.png" alt="Download on the App Store" />
           </button>
         </div>
-        <div class="px-4 flex justify-center mt-[55px] mb-12 gap-[14px]">
-            <button class="border border-[#778692] rounded-md h-[50px] flex items-center px-3 hover:scale-90 active:scale-100 transition duration-200">
-                <img src="../assets/google-play.png" alt="Get it on Google Play">
-            </button>
-            <button class="border border-[#778692] rounded-md h-[50px] flex items-center px-[15px] hover:scale-90 active:scale-100 transition duration-200">
-                <img src="../assets/app-store.png" alt="Download on the App Store">
-            </button>
-        </div>
       </div>
-      <div class="hidden md:flex justify-center items-center w-1/2 bg-[url('../assets/background.png')] bg-center">
-        <img
-            src="../assets/joinda-logo.png"
-            class="w-[240px] h-auto aspect-square"
-            alt="Joinda Logo"
-          />
+      <div class="right-container">
+        <img src="../assets/joinda-logo.png" class="large-logo" alt="Joinda Logo" />
       </div>
     </main>
-    <footer class="min-h-[60px] bg-footerBg flex justify-center items-center">
-      <div class="w-full max-w-[942px] mx-auto px-4 flex">
-        <ul class="flex flex-wrap gap-x-10 text-bodyText items-center justify-center text-center py-4">
-          <li><a href="#" class="text-sm">Features</a></li>
-          <li><a href="#" class="text-sm">Help Center</a></li>
-          <li><a href="#" class="text-sm">Terms of Service</a></li>
-          <li><a href="#" class="text-sm">Privacy Policy</a></li>
-          <li><a href="#" class="text-sm">Cookie Policy</a></li>
-          <li><a href="#" class="text-sm">Accessibility</a></li>
-          <li><a href="#" class="text-sm">Careers</a></li>
-          <li><a href="#" class="text-sm">Settings</a></li>
+    <footer class="footer">
+      <div class="footer-content">
+        <ul class="footer-links">
+          <li><a href="#">Features</a></li>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+          <li><a href="#">Accessibility</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Settings</a></li>
         </ul>
       </div>
     </footer>
