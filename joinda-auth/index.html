@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Joinda - Community</title>
+  <link rel="stylesheet" href="./output.css" />
+  <link rel="shortcut icon" href="./assets/favicon.png" type="image/png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bodyText: "#6B7280",
+            primaryBg: "#04141D",
+            secondaryGrey: "#778692",
+            secondary: "#8AE5CF",
+            footerBg: "#030E14",
+          },
+          backgroundImage: {
+            'slide-primary': "url('./assets/slide1-bg.png')",
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .left-container::before {
+      content: '';
+      top: 0;
+      left: 0;
+      background: url('./assets/vector-top.png');
+      background-position: bottom right;
+      position: absolute;
+      width: 120px;
+      height: 215px;
+    }
+
+    .left-container::after {
+      content: '';
+      bottom: 0;
+      right: 0;
+      background: url('./assets/vector-bottom.png');
+      position: absolute;
+      width: 136px;
+      height: 243px;
+    }
+
+    #modalTitle {
+      background: linear-gradient(90deg, #C8C8C8 4.29%, #878787 97.5%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-fill-color: transparent;
+    }
+
+    .bg-slide-primary {
+      background-size: calc(100% - 10px);
+      background-position: bottom left;
+      background-repeat: no-repeat;
+    }
+    /* Scaling animation */
+    @keyframes scaleIn {
+      0% {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    /* Fade-out and move-up animation */
+    @keyframes fadeOutUp {
+      0% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+    }
+
+    .scale-in {
+      animation: scaleIn 0.8s forwards;
+    }
+
+    .fade-out-up {
+      animation: fadeOutUp 0.8s forwards;
+    }
+
+  </style>
+</head>
+
+<body>
+  <main class="bg-primaryBg min-h-[calc(100vh_-_60px)] flex">
+    <div class="w-full md:w-1/2 left-container relative">
+      <div class="mt-[60px] mb-8 mx-auto flex flex-col w-fit justify-center items-center">
+        <img src="./assets/joinda-logo.png" class="w-[100px] h-auto" alt="Joinda Logo" />
+        <p class="text-bodyText text-center text-xl">
+          Step into the Joinda universe
+        </p>
+      </div>
+      <div class="w-full max-w-[528px] mx-auto px-4">
+        <button
+          class="bg-white text-[#333] font-medium text-[22px] rounded-full flex items-center justify-center w-full h-14 gap-4 hover:opacity-80 active:opacity-100 transition duration-200 mb-4">
+          <img src="./assets/google.png" alt="" />
+          Sign up with Google
+        </button>
+        <button
+          class="bg-white text-[#333] font-medium text-[22px] rounded-full flex items-center justify-center w-full h-14 gap-4 hover:opacity-80 active:opacity-100 transition duration-200 mb-7">
+          <img src="./assets/apple.png" alt="" />
+          Sign up with Apple
+        </button>
+        <div class="flex w-full gap-6 items-center">
+          <div class="bg-bodyText/25 h-0.5 w-full"></div>
+          <div class="text-bodyText text-2xl">OR</div>
+          <div class="bg-bodyText/25 h-0.5 w-full"></div>
+        </div>
+        <button id="openSignUpModal"
+          class="bg-secondaryGrey text-white font-medium text-[22px] rounded-full flex items-center justify-center w-full h-14 gap-4 hover:opacity-80 active:opacity-100 transition duration-200 my-7">
+          Create Account
+        </button>
+        <p class="text-bodyText text-[15px] text-center max-w-[35ch] mx-auto">
+          By creating an account you accept, Joinda
+          <span class="text-secondary font-semibold"> Terms of Use </span>
+          and
+          <span class="text-secondary font-semibold"> Privacy Policy </span>
+        </p>
+      </div>
+      <div class="mt-12 w-full max-w-[528px] mx-auto px-4">
+        <p class="text-white font-semibold text-center mb-8">
+          Already have an account?
+        </p>
+        <button id="openLoginModal"
+          class="border border-secondaryGrey text-secondaryGrey font-medium text-[22px] rounded-full flex items-center justify-center w-full h-14 gap-4 hover:opacity-80 active:opacity-100 transition duration-200 my-7">
+          Sign In
+        </button>
+      </div>
+      <div class="px-4 flex justify-center mt-[55px] mb-12 gap-[14px]">
+        <button
+          class="border border-[#778692] rounded-md h-[50px] flex items-center px-3 hover:scale-90 active:scale-100 transition duration-200">
+          <img src="./assets/google-play.png" alt="Get it on Google Play" />
+        </button>
+        <button
+          class="border border-[#778692] rounded-md h-[50px] flex items-center px-[15px] hover:scale-90 active:scale-100 transition duration-200">
+          <img src="./assets/app-store.png" alt="Download on the App Store" />
+        </button>
+      </div>
+    </div>
+    <div class="hidden md:flex justify-center items-center w-1/2 bg-[url('./assets/background.png')] bg-center">
+
+      <div id="logo-container" class="flex justify-center items-center w-full h-full">
+        <img
+          src="./assets/joinda-logo.png"
+          class="w-[240px] h-auto aspect-square"
+          alt="Joinda Logo"
+        />
+      </div>
+      <div id="screen-container" class="hidden justify-center items-center w-full h-full">
+        <img
+          src="./assets/joinda-screen.png"
+          class="w-auto max-w-[381px] h-auto max-h-[560px] aspect-auto"
+          alt="Joinda Logo"
+        />
+      </div>
+      
+      <div id="carousel-container" class="hidden relative w-full overflow-hidden">
+        <div class="carousel-wrapper flex gap-8 transition-transform duration-500 ease-in-out max-h-[600px]">
+          <!-- Slide 1 -->
+          <div class="carousel-slide w-[352px]">
+            <div class="flex flex-col bg-[#7F5CE2] bg-slide-primary max-w-[352px] w-[352px] h-full min-h-[522px] rounded-3xl bg-cover">
+              <p class="text-lg text-white p-7">
+                Use <span class="font-bold">JOIN</span> as a secure and transparent
+                <span class="font-bold text-[#89DAD0]">means of exchange</span>
+                within the ecosystem.
+              </p>
+              <div class="flex h-[350px] w-full object-scale-down">
+                <img
+                  src="./assets/carousel/kites.webp"
+                  alt="Two flying kites around Join token"
+                  class="flex w-full h-auto"
+                />
+              </div>
+            </div>
+          </div>
+      
+          <!-- Slide 2 -->
+          <div class="carousel-slide">
+            <div class="bg-[#030E14] max-w-[352px] w-[352px] h-full min-h-[522px] rounded-3xl px-7 pt-0">
+              <p class="text-lg text-white py-7">
+                Introducing our
+                <span class="font-bold text-[#89DAD0]">global</span>
+                decentralized crypto debit card for in - store and online payments.
+              </p>
+              <div class="relative top-0 h-[380px] flex items-center px-1">
+                <div
+                  class="absolute h-full w-full bg-slide-card mix-blend-color-dodge bg-contain bg-center bg-no-repeat"></div>
+                <img draggable={false} src='./assets/carousel/card.webp' width={1056} height={1113}
+                  alt="Join in-game purchase screen shot"
+                  class="flex mx-auto h-full w-auto object-scale-down mix-blend-normal animate-bounce-token" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="carousel-slide">
+            <div class="bg-[#030E14] text-white max-w-[352px] w-[352px] h-full min-h-[522px] rounded-3xl p-7 pt-0">
+              <div class="flex items-start">
+                <img draggable={false} src='./assets/carousel/pay.webp' width={822} height={1224}
+                  alt="Join payment successful screen shot" class="flex mx-auto w-auto h-auto" />
+              </div>
+              <p class="text-lg pt-7">
+                <span class="font-bold text-[#89DAD0]">Pay </span>for a wide
+                range of products and services using
+                <span class="font-semibold"> JOIN </span> tokens
+              </p>
+            </div>
+            
+          </div>
+
+          <!-- Slide 4 -->
+          <div class="carousel-slide">
+            <div class="bg-[#030E14] max-w-[352px] w-[352px] h-full min-h-[522px] rounded-3xl p-7 pt-0">
+              <div class="flex items-start">
+                <img draggable={false} src='./assets/carousel/rewards.webp' width={810} height={1237}
+                  alt="Join rewards screen shot" class="flex mx-auto h-full w-auto object-contain" />
+              </div>
+              <p class="text-lg text-white pt-7">
+                <span class="font-bold text-[#89DAD0]">Earn Rewards </span>in
+                <span class="font-semibold"> JOIN </span>
+                for high engagement and content creation
+              </p>
+            </div>
+          </div>
+
+          <!-- Slide 5 -->
+          <div class="carousel-slide">
+            <div class="bg-[#030E14] flex flex-col max-w-[352px] w-[352px] h-full min-h-[522px] rounded-3xl px-7 py-0">
+              <p class="text-lg text-white py-7">
+                <span class="font-bold text-[#89DAD0]">Raise Funds </span>
+                by launching crowdfunding campaigns for your projects.
+              </p>
+              <div class="flex justify-end items-end h-full">
+                <img
+                  draggable={false}
+                  src='./assets/carousel/funds.webp'
+                  alt="Join fundraising screen shot"
+                  class="flex mx-auto h-auto w-auto bottom-0"
+                />
+              </div>
+            </div>
+          </div>
+      
+        </div>
+      </div>
+      
+
+      <img
+          src="./assets/joinda-logo.png"
+          class="hidden w-[240px] h-auto aspect-square"
+          alt="Joinda Logo"
+        />
+    </div>
+  </main>
+  <footer class="min-h-[60px] bg-footerBg flex justify-center items-center">
+    <div class="w-full max-w-[942px] mx-auto px-4 flex">
+      <ul class="flex flex-wrap gap-x-10 text-bodyText items-center justify-center text-center py-4">
+        <li><a href="#" class="text-sm">Features</a></li>
+        <li><a href="#" class="text-sm">Help Center</a></li>
+        <li><a href="#" class="text-sm">Terms of Service</a></li>
+        <li><a href="#" class="text-sm">Privacy Policy</a></li>
+        <li><a href="#" class="text-sm">Cookie Policy</a></li>
+        <li><a href="#" class="text-sm">Accessibility</a></li>
+        <li><a href="#" class="text-sm">Careers</a></li>
+        <li><a href="#" class="text-sm">Settings</a></li>
+      </ul>
+    </div>
+  </footer>
+  <!-- Modal backdrop -->
+  <div id="modalBackdrop" class="fixed inset-0 bg-white/30 backdrop-blur-sm hidden items-center justify-center">
+    <!-- Modal content -->
+    <div id="modalContent"
+      class="bg-primaryBg py-8 px-8 md:px-[100px] rounded-[50px] border border-[#050B28] w-[calc(100%_-_32px)] max-w-[800px] h-fit max-h-[80vh] overflow-y-auto relative">
+      <button id="closeModalLogin" class="hidden absolute top-[37.5px] right-[37.5px] hover:scale-90 active:scale-100">
+        <img src="./assets/x-icon.png" alt="X" />
+      </button>
+      <button id="closeModalSignUp" class="hidden absolute top-[37.5px] right-[37.5px] hover:scale-90 active:scale-100">
+        <img src="./assets/x-icon.png" alt="X" />
+      </button>
+      <!-- Modal header -->
+      <img src="./assets/joinda-icon.png" alt="Joinda Icon" class="mx-auto" />
+      <div>
+        <h2 id="modalTitle" class="text-3xl font-semibold mb-2 leading-[50px]">
+          Login
+        </h2>
+        <div id="signUpIndicator" class="h-[5px] w-[206px] gap-1">
+          <div class="h-full w-[101px] rounded-sm bg-[#8AE5CF]"></div>
+          <div id="step2" class="h-full w-[101px] rounded-sm bg-[#8AE5CF]"></div>
+        </div>
+        <div id="loginIndicator" class="h-[5px] w-[101px] rounded-sm bg-[#8AE5CF]"></div>
+      </div>
+
+      <!-- Login content -->
+      <div id="loginContent" class="hidden text-[#858585] pt-7 pb-9">
+        <form action="" class="flex flex-col">
+          <div class="flex flex-col gap-3">
+            <label for="username"> Username </label>
+            <input placeholder="Enter your username" type="text"
+              class="h-16 w-full max-w-[600px] border border-secondaryGrey placeholder:text-secondaryGrey/80 text-xl bg-transparent rounded-[10px] px-4" />
+          </div>
+          <div class="flex flex-col gap-3 mt-10">
+            <label for="password"> Password </label>
+            <div class="relative">
+              <input id="passwordInput" placeholder="Enter your password" type="password"
+                class="h-16 w-full max-w-[600px] border border-secondaryGrey placeholder:text-secondaryGrey/80 text-xl bg-transparent rounded-[10px] px-4" />
+              <button id="togglePassword" type="button"
+                class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500">
+                Show
+              </button>
+            </div>
+          </div>
+          <button type="button" class="mt-[30px] flex w-fit ml-auto text-[15px]">Forgot Password?</button>
+          <div class="flex mt-2.5">
+            <input type="checkbox" class="bg-transparent mr-2" name="remember" id="remember">
+            <label for="remember">Remember this device</label>
+          </div>
+          <button type="submit"
+            class="rounded-full w-full h-[72px] border border-[#333] bg-secondaryGrey text-center text-white text-[22px] mt-[113px]">Log
+            In</button>
+          <p class="mt-[25px] text-[15px] text-center text-[#FCFCFC] mx-auto">Don&apos;t have an account? <button
+              type="button" class="text-[#8AE5CF] font-semibold">Create Account</button></p>
+        </form>
+      </div>
+
+      <!-- Stepper for Sign Up -->
+      <div id="signUpStep1" class="hidden text-[#858585]">
+        <p>Step 1: Enter your details.</p>
+        <!-- Next button for Step 1 -->
+        <button id="nextStep" class="mt-4 px-4 py-2 bg-blue-600 text-white rounded">
+          Next
+        </button>
+      </div>
+
+      <div id="signUpStep2" class="hidden text-[#858585]">
+        <p>Step 2: Confirm your details and sign up.</p>
+        <!-- Sign up button for Step 2 -->
+        <button id="signUpButton" class="mt-4 px-4 py-2 bg-green-600 text-white rounded">
+          Sign Up
+        </button>
+      </div>
+    </div>
+  </div>
+  <script>
+    const openLoginModalButton = document.getElementById("openLoginModal");
+    const openSignUpModalButton = document.getElementById("openSignUpModal");
+    const step2 = document.getElementById("step2");
+    const modalBackdrop = document.getElementById("modalBackdrop");
+    const modalTitle = document.getElementById("modalTitle");
+    const signUpIndicator = document.getElementById("signUpIndicator");
+    const loginIndicator = document.getElementById("loginIndicator");
+    const loginContent = document.getElementById("loginContent");
+    const signUpStep1 = document.getElementById("signUpStep1");
+    const signUpStep2 = document.getElementById("signUpStep2");
+    const closeModalLogin = document.getElementById("closeModalLogin");
+    const closeModalSignUp = document.getElementById("closeModalSignUp");
+    const nextStepButton = document.getElementById("nextStep");
+    const signUpButton = document.getElementById("signUpButton");
+    const passwordInput = document.getElementById('passwordInput');
+    const toggleButton = document.getElementById('togglePassword');
+
+    // Open Login modal
+    openLoginModalButton.addEventListener("click", () => {
+      modalTitle.textContent = "Login";
+      signUpIndicator.classList.add("hidden");
+      loginIndicator.classList.remove("hidden");
+      loginIndicator.classList.add("flex");
+      loginContent.classList.remove("hidden");
+      signUpStep1.classList.add("hidden");
+      signUpStep2.classList.add("hidden");
+      modalBackdrop.classList.remove("hidden");
+      modalBackdrop.classList.add("flex");
+      closeModalLogin.classList.remove("hidden");
+      closeModalSignUp.classList.add("hidden");
+    });
+
+    // Open Sign Up modal with stepper
+    openSignUpModalButton.addEventListener("click", () => {
+      modalTitle.textContent = "Create your Account";
+      step2.classList.add("bg-opacity-30");
+      loginIndicator.classList.add("hidden");
+      signUpIndicator.classList.remove("hidden");
+      signUpIndicator.classList.add("flex");
+      loginContent.classList.add("hidden");
+      signUpStep1.classList.remove("hidden");
+      signUpStep2.classList.add("hidden");
+      modalBackdrop.classList.remove("hidden");
+      modalBackdrop.classList.add("flex");
+      closeModalSignUp.classList.remove("hidden");
+      closeModalLogin.classList.add("hidden");
+    });
+
+    // Move to next step in Sign Up
+    nextStepButton.addEventListener("click", () => {
+      signUpStep1.classList.add("hidden");
+      signUpStep2.classList.remove("hidden");
+      step2.classList.remove("bg-opacity-30");
+    });
+
+    // Close modals
+    closeModalLogin.addEventListener("click", () => {
+      modalBackdrop.classList.add("hidden");
+    });
+
+    closeModalSignUp.addEventListener("click", () => {
+      modalBackdrop.classList.add("hidden");
+    });
+
+    toggleButton.addEventListener('click', function () {
+      // Toggle the type attribute
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleButton.textContent = 'Hide'; // Change button text
+      } else {
+        passwordInput.type = 'password';
+        toggleButton.textContent = 'Show'; // Change button text
+      }
+    });
+
+
+    // Close modal when clicking outside content
+    window.addEventListener("click", (e) => {
+      if (e.target === modalBackdrop) {
+        modalBackdrop.classList.add("hidden");
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+  const logoContainer = document.getElementById('logo-container');
+  const screenContainer = document.getElementById('screen-container');
+  const carouselContainer = document.getElementById('carousel-container');
+  const carouselWrapper = document.querySelector('.carousel-wrapper');
+  const slides = Array.from(document.querySelectorAll('.carousel-slide'));
+  let currentIndex = 0;
+  let intervalId;
+  let slideWidth;
+
+  // Clone all slides for looping
+  slides.forEach(slide => {
+    const clone = slide.cloneNode(true);
+    clone.classList.add('clone');
+    carouselWrapper.appendChild(clone);
+  });
+
+  function calculateSlideWidth() {
+    slideWidth = slides[0].clientWidth + 32; // Width plus margin
+    carouselWrapper.style.transition = 'none';
+    centerSlide();
+  }
+
+  function centerSlide() {
+    const offset = (carouselContainer.clientWidth - slideWidth) / 2;
+    carouselWrapper.style.transform = `translateX(${-slideWidth * currentIndex + offset}px)`;
+  }
+
+  function showLogo() {
+    logoContainer.classList.remove('hidden');
+    logoContainer.classList.add('flex');
+  }
+
+  function hideLogo() {
+    logoContainer.classList.remove('flex');
+    logoContainer.classList.add('hidden');
+  }
+
+  function showScreenContainer() {
+    screenContainer.classList.remove('hidden');
+    screenContainer.classList.add('flex', 'scale-in');
+
+    // Fade out and move up after 3 seconds
+    setTimeout(() => {
+      screenContainer.classList.add('fade-out-up');
+
+      setTimeout(() => {
+        screenContainer.classList.remove('flex');
+        screenContainer.classList.add('hidden');
+        showCarousel();
+      }, 800); 
+    }, 3000);
+  }
+
+  function showCarousel() {
+    carouselContainer.classList.remove('hidden');
+    carouselContainer.classList.add('flex');
+    calculateSlideWidth();
+    startAutoplay();
+  }
+
+  function moveToNextSlide() {
+    currentIndex++;
+    carouselWrapper.style.transition = 'transform 0.5s ease-in-out';
+    centerSlide();
+
+    // When reaching the end of the original slides plus clones
+    if (currentIndex === slides.length) {
+      setTimeout(() => {
+        carouselWrapper.style.transition = 'none';
+        currentIndex = 0; // Jump back to the original first slide without transition
+        centerSlide();
+      }, 500); // Wait for the transition to finish before resetting
+    }
+  }
+
+  function moveToPrevSlide() {
+    currentIndex--;
+    carouselWrapper.style.transition = 'transform 0.5s ease-in-out';
+    centerSlide();
+
+    // When reaching the beginning of the cloned slides
+    if (currentIndex === -1) {
+      setTimeout(() => {
+        carouselWrapper.style.transition = 'none';
+        currentIndex = slides.length - 1; // Jump to the last slide without transition
+        centerSlide();
+      }, 500);
+    }
+  }
+
+  function startAutoplay() {
+    intervalId = setInterval(moveToNextSlide, 3000); // 3-second interval
+  }
+
+  function stopAutoplay() {
+    clearInterval(intervalId);
+  }
+
+  // Initially show the logo for 3 seconds, then show the screen container after 1 second delay
+  setTimeout(() => {
+    hideLogo();
+    showScreenContainer();
+  }, 3000);
+
+  // Optional: pause autoplay on hover
+  carouselWrapper.addEventListener('mouseenter', stopAutoplay);
+  carouselWrapper.addEventListener('mouseleave', startAutoplay);
+
+  // Recalculate slide width on window resize
+  window.addEventListener('resize', calculateSlideWidth);
+});
+
+  
+  </script>
+
+</body>
+
+</html>
