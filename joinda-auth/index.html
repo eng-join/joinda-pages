@@ -283,27 +283,53 @@
     </div>
   </footer>
   <!-- Modal backdrop -->
-  <div id="modalBackdrop" class="fixed inset-0 bg-white/30 backdrop-blur-sm hidden items-center justify-center">
-    <!-- Modal content -->
-    <div id="modalContent"
-      class="bg-primaryBg py-8 px-8 md:px-[100px] rounded-[50px] border border-[#050B28] w-[calc(100%_-_32px)] max-w-[800px] h-fit max-h-[80vh] overflow-y-auto relative">
-      <button id="closeModalLogin" class="hidden absolute top-[37.5px] right-[37.5px] hover:scale-90 active:scale-100">
+  <div
+  id="modalBackdrop"
+  class="fixed inset-0 bg-white/30 backdrop-blur-sm hidden items-center justify-center"
+>
+  <!-- Modal content -->
+  <div
+    id="modalContent"
+    class="bg-primaryBg rounded-[50px] border border-[#050B28] w-[calc(100%_-_32px)] max-w-[800px] h-fit max-h-[80vh] overflow-y-hidden relative"
+  >
+  <div class="py-8 px-8 md:px-[100px] max-h-[80vh] overflow-y-auto ">
+
+      <button
+        id="closeModalLogin"
+        class="hidden absolute top-[37.5px] right-[37.5px] hover:scale-90 active:scale-100"
+      >
         <img src="./assets/x-icon.png" alt="X" />
       </button>
-      <button id="closeModalSignUp" class="hidden absolute top-[37.5px] right-[37.5px] hover:scale-90 active:scale-100">
+      <button
+        id="closeModalSignUp"
+        class="hidden absolute top-[37.5px] right-[37.5px] hover:scale-90 active:scale-100"
+      >
         <img src="./assets/x-icon.png" alt="X" />
       </button>
       <!-- Modal header -->
-      <img src="./assets/joinda-icon.png" alt="Joinda Icon" class="mx-auto" />
+      <img
+        src="./assets/joinda-icon.png"
+        alt="Joinda Icon"
+        class="mx-auto"
+      />
       <div>
-        <h2 id="modalTitle" class="text-3xl font-semibold mb-2 leading-[50px]">
+        <h2
+          id="modalTitle"
+          class="text-3xl font-semibold mb-2 leading-[50px]"
+        >
           Login
         </h2>
         <div id="signUpIndicator" class="h-[5px] w-[206px] gap-1">
           <div class="h-full w-[101px] rounded-sm bg-[#8AE5CF]"></div>
-          <div id="step2" class="h-full w-[101px] rounded-sm bg-[#8AE5CF]"></div>
+          <div
+            id="step2"
+            class="h-full w-[101px] rounded-sm bg-[#8AE5CF]"
+          ></div>
         </div>
-        <div id="loginIndicator" class="h-[5px] w-[101px] rounded-sm bg-[#8AE5CF]"></div>
+        <div
+          id="loginIndicator"
+          class="h-[5px] w-[101px] rounded-sm bg-[#8AE5CF]"
+        ></div>
       </div>
 
       <!-- Login content -->
@@ -311,17 +337,27 @@
         <form action="" class="flex flex-col">
           <div class="flex flex-col gap-3">
             <label for="username"> Username </label>
-            <input placeholder="Enter your username" type="text"
-              class="h-16 w-full max-w-[600px] border border-secondaryGrey placeholder:text-secondaryGrey/80 text-xl bg-transparent rounded-[10px] px-4" />
+            <input
+              placeholder="Enter your username"
+              type="text"
+              class="h-16 w-full max-w-[600px] border border-secondaryGrey focus:border-secondary outline-none text-secondaryGrey placeholder:text-secondaryGrey/80 text-xl bg-transparent rounded-[10px] px-4"
+            />
           </div>
           <div class="flex flex-col gap-3 mt-10">
             <label for="password"> Password </label>
             <div class="relative">
-              <input id="passwordInput" placeholder="Enter your password" type="password"
-                class="h-16 w-full max-w-[600px] border border-secondaryGrey placeholder:text-secondaryGrey/80 text-xl bg-transparent rounded-[10px] px-4" />
-              <button id="togglePassword" type="button"
-                class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500">
-                Show
+              <input
+                id="passwordInput1"
+                placeholder="Enter your password"
+                type="password"
+                class="h-16 w-full max-w-[600px] border border-secondaryGrey focus:border-secondary outline-none text-secondaryGrey placeholder:text-secondaryGrey/80 text-xl bg-transparent rounded-[10px] px-4"
+              />
+              <button
+                id="togglePassword1"
+                type="button"
+                class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 transition duration-200"
+              >
+                <img src="./assets/eye.png" alt="Show" id="eyeIcon1">
               </button>
             </div>
           </div>
@@ -330,228 +366,386 @@
             <input type="checkbox" class="bg-transparent mr-2" name="remember" id="remember">
             <label for="remember">Remember this device</label>
           </div>
-          <button type="submit"
-            class="rounded-full w-full h-[72px] border border-[#333] bg-secondaryGrey text-center text-white text-[22px] mt-[113px]">Log
-            In</button>
-          <p class="mt-[25px] text-[15px] text-center text-[#FCFCFC] mx-auto">Don&apos;t have an account? <button
-              type="button" class="text-[#8AE5CF] font-semibold">Create Account</button></p>
+          <button type="submit" class="rounded-full h-16 md:h-[72px] w-[calc(100%_-_68px)] mx-auto border border-[#333] bg-secondaryGrey text-center text-white text-[22px] mt-16 md:mt-[113px] font-semibold hover:opacity-80 active:opacity-100 transition duration-200">Log In</button>
+          <p class="mt-[25px] text-[15px] text-center text-[#FCFCFC] mx-auto">Don&apos;t have an account? <button type="button" id="openAlreadySignUpModal" class="text-[#8AE5CF] font-semibold">Create Account</button></p>
         </form>
       </div>
 
-      <!-- Stepper for Sign Up -->
-      <div id="signUpStep1" class="hidden text-[#858585]">
-        <p>Step 1: Enter your details.</p>
-        <!-- Next button for Step 1 -->
-        <button id="nextStep" class="mt-4 px-4 py-2 bg-blue-600 text-white rounded">
-          Next
-        </button>
-      </div>
+      <form>
+        <!-- Stepper for Sign Up -->
+        <div id="signUpStep1" class="hidden text-[#858585]">
+          <div class="flex flex-col pt-7">
+            <div class="flex flex-col gap-3">
+              <label for="email"> Email address </label>
+              <input
+                placeholder="Enter your email address"
+                type="text"
+                name="email"
+                class="h-16 w-full max-w-[600px] border border-secondaryGrey focus:border-secondary outline-none text-secondaryGrey placeholder:text-secondaryGrey/80 text-xl bg-transparent rounded-[10px] px-4"
+              />
+            </div>
+            <div class="flex flex-col gap-3 mt-10">
+              <label for="username"> Username </label>
+              <input
+                placeholder="Enter your preferred username"
+                type="text"
+                name="username"
+                class="h-16 w-full max-w-[600px] border border-secondaryGrey focus:border-secondary outline-none text-secondaryGrey placeholder:text-secondaryGrey/80 text-xl bg-transparent rounded-[10px] px-4"
+              />
+            </div>
+            <div class="flex flex-col gap-3 mt-10">
+              <label for="gender"> Gender </label>
+              <select name="gender" id="gender"
+                class="h-16 w-full max-w-[600px] border border-secondaryGrey focus:border-secondary outline-none text-secondaryGrey placeholder:text-secondaryGrey/80 text-xl bg-transparent rounded-[10px] px-4"
+              >
+                <option value="select" selected disabled>Select your Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="others">Others</option>
+              </select>
+            </div>
+            <button id="nextStep" type="button" class="rounded-full mx-auto w-[calc(100%_-_68px)] h-16 md:h-[72px] border border-[#333] bg-secondaryGrey text-center text-white text-[22px] mt-11 font-semibold hover:opacity-80 active:opacity-100 transition duration-200">Next</button>
+            <p class="mt-[25px] text-[15px] text-center text-[#FCFCFC] mx-auto">Already have an account? <button type="button" id="openAlreadyLoginModal" class="text-[#8AE5CF] font-semibold">Log In</button></p>
+          </div>
+        </div>
 
-      <div id="signUpStep2" class="hidden text-[#858585]">
-        <p>Step 2: Confirm your details and sign up.</p>
-        <!-- Sign up button for Step 2 -->
-        <button id="signUpButton" class="mt-4 px-4 py-2 bg-green-600 text-white rounded">
-          Sign Up
-        </button>
-      </div>
+        <div id="signUpStep2" class="hidden text-[#858585]">
+          <div class="flex flex-col gap-3 mt-7">
+            <label for="password"> Password </label>
+            <div class="relative">
+              <input
+                id="passwordInput2"
+                placeholder="Enter your password"
+                type="password"
+                class="h-16 w-full max-w-[600px] border border-secondaryGrey focus:border-secondary outline-none text-secondaryGrey placeholder:text-secondaryGrey/80 text-xl bg-transparent rounded-[10px] px-4"
+              />
+              <button
+                id="togglePassword2"
+                type="button"
+                class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 transition duration-200"
+              >
+                <img src="./assets/eye.png" alt="Show" id="eyeIcon2">
+              </button>
+            </div>
+          </div>
+          <div class="flex flex-col gap-3 mt-10">
+            <label for="password">Confirm Password </label>
+            <div class="relative">
+              <input
+                id="confirmPasswordInput"
+                placeholder="Confirm your password"
+                type="password"
+                class="h-16 w-full max-w-[600px] border border-secondaryGrey focus:border-secondary outline-none text-secondaryGrey placeholder:text-secondaryGrey/80 text-xl bg-transparent rounded-[10px] px-4"
+              />
+              <button
+                id="toggleConfirmPassword"
+                type="button"
+                class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 transition duration-200"
+              >
+                <img src="../assets/eye.png" alt="Show" id="eyeIcon3">
+              </button>
+            </div>
+          </div>
+          <div class="mt-10">
+            <!-- Password Criteria List -->
+            <ul class="flex flex-col md:flex-row gap-3">
+              <li id="uppercaseCriteria" class="flex items-center justify-start md:justify-center">
+                <img id="uppercaseIcon" class="mr-1" src="./assets/tick-circle.png" alt="Uppercase"> 1 uppercase letter
+              </li>
+              <li id="specialCharacterCriteria" class="flex items-center justify-start md:justify-center">
+                <img id="specialCharIcon" class="mr-1" src="./assets/tick-circle.png" alt="Special Character"> 1 special character
+              </li>
+              <li id="lengthCriteria" class="flex items-center justify-start md:justify-center">
+                <img id="lengthIcon" class="mr-1" src="./assets/tick-circle.png" alt="Length"> 8 characters long
+              </li>
+            </ul>
+            <p class="text-bodyText text-[15px] text-center max-w-[35ch] mx-auto mt-[50px]">
+              By creating an account you accept, Joinda
+              <span class="text-secondary font-semibold"> Terms of Use </span>
+              and
+              <span class="text-secondary font-semibold"> Privacy Policy </span>
+            </p>
+          </div>
+          <div class="flex flex-col-reverse sm:flex-row gap-4 md:gap-8 mt-8 mb-14 w-full md:w-[calc(100%_-_68px)] mx-auto">
+            <button type="button" id="previousStepButton" class="flex items-center justify-center rounded-full w-full h-16 md:h-[72px] border border-secondaryGrey bg-transparent text-center text-secondaryGrey text-[22px] font-semibold hover:opacity-80 active:opacity-100 transition duration-200">
+              <img src="./assets/arrow-right.png" alt="Right Arrow">  
+              Go back
+            </button>
+            <button type="submit" class="rounded-full w-full h-16 md:h-[72px] border border-[#333] bg-secondaryGrey text-center text-white text-[22px] font-semibold hover:opacity-80 active:opacity-100 transition duration-200">Create Account</button>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
+</div>
   <script>
     const openLoginModalButton = document.getElementById("openLoginModal");
-    const openSignUpModalButton = document.getElementById("openSignUpModal");
-    const step2 = document.getElementById("step2");
-    const modalBackdrop = document.getElementById("modalBackdrop");
-    const modalTitle = document.getElementById("modalTitle");
-    const signUpIndicator = document.getElementById("signUpIndicator");
-    const loginIndicator = document.getElementById("loginIndicator");
-    const loginContent = document.getElementById("loginContent");
-    const signUpStep1 = document.getElementById("signUpStep1");
-    const signUpStep2 = document.getElementById("signUpStep2");
-    const closeModalLogin = document.getElementById("closeModalLogin");
-    const closeModalSignUp = document.getElementById("closeModalSignUp");
-    const nextStepButton = document.getElementById("nextStep");
-    const signUpButton = document.getElementById("signUpButton");
-    const passwordInput = document.getElementById('passwordInput');
-    const toggleButton = document.getElementById('togglePassword');
+      const openSignUpModalButton = document.getElementById("openSignUpModal");
+      const openAlreadyLoginModalButton = document.getElementById("openAlreadyLoginModal");
+      const openAlreadySignUpModalButton = document.getElementById("openAlreadySignUpModal");
+      const step2 = document.getElementById("step2");
+      const modalBackdrop = document.getElementById("modalBackdrop");
+      const modalTitle = document.getElementById("modalTitle");
+      const signUpIndicator = document.getElementById("signUpIndicator");
+      const loginIndicator = document.getElementById("loginIndicator");
+      const loginContent = document.getElementById("loginContent");
+      const signUpStep1 = document.getElementById("signUpStep1");
+      const signUpStep2 = document.getElementById("signUpStep2");
+      const closeModalLogin = document.getElementById("closeModalLogin");
+      const closeModalSignUp = document.getElementById("closeModalSignUp");
+      const nextStepButton = document.getElementById("nextStep");
+      const previousStepButton = document.getElementById("previousStepButton");
+      const passwordInput1 = document.getElementById('passwordInput1');
+      const toggleButton1 = document.getElementById('togglePassword1');
+      const passwordInput2 = document.getElementById('passwordInput2');
+      const toggleButton2 = document.getElementById('togglePassword2');
+      const passwordInput3 = document.getElementById('confirmPasswordInput');
+      const toggleButton3 = document.getElementById('toggleConfirmPassword');
+      const eyeIcon1 = document.getElementById('eyeIcon1');
+      const eyeSlashIcon1 = document.getElementById('eyeSlashIcon1');
+      const eyeIcon2 = document.getElementById('eyeIcon2');
+      const eyeSlashIcon2 = document.getElementById('eyeSlashIcon2');
+      const eyeIcon3 = document.getElementById('eyeIcon3');
+      const eyeSlashIcon3 = document.getElementById('eyeSlashIcon3');
 
-    // Open Login modal
-    openLoginModalButton.addEventListener("click", () => {
-      modalTitle.textContent = "Login";
-      signUpIndicator.classList.add("hidden");
-      loginIndicator.classList.remove("hidden");
-      loginIndicator.classList.add("flex");
-      loginContent.classList.remove("hidden");
-      signUpStep1.classList.add("hidden");
-      signUpStep2.classList.add("hidden");
-      modalBackdrop.classList.remove("hidden");
-      modalBackdrop.classList.add("flex");
-      closeModalLogin.classList.remove("hidden");
-      closeModalSignUp.classList.add("hidden");
-    });
+      // Open Login modal
+      function openLoginModal () {
+        modalTitle.textContent = "Login";
+        signUpIndicator.classList.add("hidden");
+        loginIndicator.classList.remove("hidden");
+        loginIndicator.classList.add("flex");
+        loginContent.classList.remove("hidden");
+        signUpStep1.classList.add("hidden");
+        signUpStep2.classList.add("hidden");
+        modalBackdrop.classList.remove("hidden");
+        modalBackdrop.classList.add("flex");
+        closeModalLogin.classList.remove("hidden");
+        closeModalSignUp.classList.add("hidden");
+      };
 
-    // Open Sign Up modal with stepper
-    openSignUpModalButton.addEventListener("click", () => {
-      modalTitle.textContent = "Create your Account";
-      step2.classList.add("bg-opacity-30");
-      loginIndicator.classList.add("hidden");
-      signUpIndicator.classList.remove("hidden");
-      signUpIndicator.classList.add("flex");
-      loginContent.classList.add("hidden");
-      signUpStep1.classList.remove("hidden");
-      signUpStep2.classList.add("hidden");
-      modalBackdrop.classList.remove("hidden");
-      modalBackdrop.classList.add("flex");
-      closeModalSignUp.classList.remove("hidden");
-      closeModalLogin.classList.add("hidden");
-    });
+      openLoginModalButton.addEventListener("click", openLoginModal);
+      openAlreadyLoginModalButton.addEventListener("click", openLoginModal);
 
-    // Move to next step in Sign Up
-    nextStepButton.addEventListener("click", () => {
-      signUpStep1.classList.add("hidden");
-      signUpStep2.classList.remove("hidden");
-      step2.classList.remove("bg-opacity-30");
-    });
-
-    // Close modals
-    closeModalLogin.addEventListener("click", () => {
-      modalBackdrop.classList.add("hidden");
-    });
-
-    closeModalSignUp.addEventListener("click", () => {
-      modalBackdrop.classList.add("hidden");
-    });
-
-    toggleButton.addEventListener('click', function () {
-      // Toggle the type attribute
-      if (passwordInput.type === 'password') {
-        passwordInput.type = 'text';
-        toggleButton.textContent = 'Hide'; // Change button text
-      } else {
-        passwordInput.type = 'password';
-        toggleButton.textContent = 'Show'; // Change button text
+      // Open Sign Up modal with stepper
+      function openSignUpModal () {
+        modalTitle.textContent = "Create your Account";
+        step2.classList.add("bg-opacity-30");
+        loginIndicator.classList.add("hidden");
+        signUpIndicator.classList.remove("hidden");
+        signUpIndicator.classList.add("flex");
+        loginContent.classList.add("hidden");
+        signUpStep1.classList.remove("hidden");
+        signUpStep2.classList.add("hidden");
+        modalBackdrop.classList.remove("hidden");
+        modalBackdrop.classList.add("flex");
+        closeModalSignUp.classList.remove("hidden");
+        closeModalLogin.classList.add("hidden");
       }
-    });
+      openSignUpModalButton.addEventListener("click", openSignUpModal);
+      openAlreadySignUpModalButton.addEventListener("click", openSignUpModal);
 
+      // Move to next step in Sign Up
+      nextStepButton.addEventListener("click", () => {
+        modalTitle.textContent = "Set up your Password";
+        signUpStep1.classList.add("hidden");
+        signUpStep2.classList.remove("hidden");
+        step2.classList.remove("bg-opacity-30");
+      });
 
-    // Close modal when clicking outside content
-    window.addEventListener("click", (e) => {
-      if (e.target === modalBackdrop) {
+      // Go back to previous step in Sign Up
+      previousStepButton.addEventListener("click", () => {
+        modalTitle.textContent = "Create your Account";
+        signUpStep2.classList.add("hidden");
+        signUpStep1.classList.remove("hidden");
+        step2.classList.add("bg-opacity-30");
+      });
+
+      // Close modals
+      closeModalLogin.addEventListener("click", () => {
         modalBackdrop.classList.add("hidden");
+      });
+
+      closeModalSignUp.addEventListener("click", () => {
+        modalBackdrop.classList.add("hidden");
+      });
+
+      // Close modal when clicking outside content
+      window.addEventListener("click", (e) => {
+        if (e.target === modalBackdrop) {
+          modalBackdrop.classList.add("hidden");
+        }
+      });
+
+      function togglePasswordVisibility(toggleButton, passwordInput, eyeIcon) {
+        toggleButton.addEventListener('click', function () {
+          // Toggle the type attribute
+          if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            eyeIcon.src = './assets/eye-slash.png';
+          } else {
+            passwordInput.type = 'password';
+            eyeIcon.src = './assets/eye.png';
+          }
+        });
       }
-    });
+
+      // Toggle the type attribute
+      toggleButton1.addEventListener('click', 
+       togglePasswordVisibility(toggleButton1, passwordInput1, eyeIcon1)
+      );
+      toggleButton2.addEventListener('click', 
+        togglePasswordVisibility(toggleButton2, passwordInput2, eyeIcon2)
+      );
+      toggleButton3.addEventListener('click',
+        togglePasswordVisibility(toggleButton3, passwordInput3, eyeIcon3)
+      );
+
+      passwordInput2.addEventListener('keyup', function () {
+        const password = this.value;
+
+        // Criteria icons
+        const uppercaseIcon = document.getElementById('uppercaseIcon');
+        const specialCharIcon = document.getElementById('specialCharIcon');
+        const lengthIcon = document.getElementById('lengthIcon');
+
+        // Regular expressions for validation
+        const uppercaseRegex = /[A-Z]/;
+        const specialCharRegex = /[!@#$%^&*(),.?":{}|<>]/;
+
+        // Check if password contains at least one uppercase letter
+        if (uppercaseRegex.test(password)) {
+          uppercaseIcon.src = './assets/tick-circle-green.png';  // Change to green icon
+        } else {
+          uppercaseIcon.src = './assets/tick-circle.png';  // Revert to initial icon
+        }
+
+        // Check if password contains at least one special character
+        if (specialCharRegex.test(password)) {
+          specialCharIcon.src = './assets/tick-circle-green.png';  // Change to green icon
+        } else {
+          specialCharIcon.src = './assets/tick-circle.png';  // Revert to initial icon
+        }
+
+        // Check if password length is at least 8 characters
+        if (password.length >= 8) {
+          lengthIcon.src = './assets/tick-circle-green.png';  // Change to green icon
+        } else {
+          lengthIcon.src = './assets/tick-circle.png';  // Revert to initial icon
+        }
+      });
 
     document.addEventListener('DOMContentLoaded', () => {
-  const logoContainer = document.getElementById('logo-container');
-  const screenContainer = document.getElementById('screen-container');
-  const carouselContainer = document.getElementById('carousel-container');
-  const carouselWrapper = document.querySelector('.carousel-wrapper');
-  const slides = Array.from(document.querySelectorAll('.carousel-slide'));
-  let currentIndex = 0;
-  let intervalId;
-  let slideWidth;
+      const logoContainer = document.getElementById('logo-container');
+      const screenContainer = document.getElementById('screen-container');
+      const carouselContainer = document.getElementById('carousel-container');
+      const carouselWrapper = document.querySelector('.carousel-wrapper');
+      const slides = Array.from(document.querySelectorAll('.carousel-slide'));
+      let currentIndex = 0;
+      let intervalId;
+      let slideWidth;
 
-  // Clone all slides for looping
-  slides.forEach(slide => {
-    const clone = slide.cloneNode(true);
-    clone.classList.add('clone');
-    carouselWrapper.appendChild(clone);
-  });
+      // Clone all slides for looping
+      slides.forEach(slide => {
+        const clone = slide.cloneNode(true);
+        clone.classList.add('clone');
+        carouselWrapper.appendChild(clone);
+      });
 
-  function calculateSlideWidth() {
-    slideWidth = slides[0].clientWidth + 32; // Width plus margin
-    carouselWrapper.style.transition = 'none';
-    centerSlide();
-  }
-
-  function centerSlide() {
-    const offset = (carouselContainer.clientWidth - slideWidth) / 2;
-    carouselWrapper.style.transform = `translateX(${-slideWidth * currentIndex + offset}px)`;
-  }
-
-  function showLogo() {
-    logoContainer.classList.remove('hidden');
-    logoContainer.classList.add('flex');
-  }
-
-  function hideLogo() {
-    logoContainer.classList.remove('flex');
-    logoContainer.classList.add('hidden');
-  }
-
-  function showScreenContainer() {
-    screenContainer.classList.remove('hidden');
-    screenContainer.classList.add('flex', 'scale-in');
-
-    // Fade out and move up after 3 seconds
-    setTimeout(() => {
-      screenContainer.classList.add('fade-out-up');
-
-      setTimeout(() => {
-        screenContainer.classList.remove('flex');
-        screenContainer.classList.add('hidden');
-        showCarousel();
-      }, 800); 
-    }, 3000);
-  }
-
-  function showCarousel() {
-    carouselContainer.classList.remove('hidden');
-    carouselContainer.classList.add('flex');
-    calculateSlideWidth();
-    startAutoplay();
-  }
-
-  function moveToNextSlide() {
-    currentIndex++;
-    carouselWrapper.style.transition = 'transform 0.5s ease-in-out';
-    centerSlide();
-
-    // When reaching the end of the original slides plus clones
-    if (currentIndex === slides.length) {
-      setTimeout(() => {
+      function calculateSlideWidth() {
+        slideWidth = slides[0].clientWidth + 32; // Width plus margin
         carouselWrapper.style.transition = 'none';
-        currentIndex = 0; // Jump back to the original first slide without transition
         centerSlide();
-      }, 500); // Wait for the transition to finish before resetting
-    }
-  }
+      }
 
-  function moveToPrevSlide() {
-    currentIndex--;
-    carouselWrapper.style.transition = 'transform 0.5s ease-in-out';
-    centerSlide();
+      function centerSlide() {
+        const offset = (carouselContainer.clientWidth - slideWidth) / 2;
+        carouselWrapper.style.transform = `translateX(${-slideWidth * currentIndex + offset}px)`;
+      }
 
-    // When reaching the beginning of the cloned slides
-    if (currentIndex === -1) {
+      function showLogo() {
+        logoContainer.classList.remove('hidden');
+        logoContainer.classList.add('flex');
+      }
+
+      function hideLogo() {
+        logoContainer.classList.remove('flex');
+        logoContainer.classList.add('hidden');
+      }
+
+      function showScreenContainer() {
+        screenContainer.classList.remove('hidden');
+        screenContainer.classList.add('flex', 'scale-in');
+
+        // Fade out and move up after 3 seconds
+        setTimeout(() => {
+          screenContainer.classList.add('fade-out-up');
+
+          setTimeout(() => {
+            screenContainer.classList.remove('flex');
+            screenContainer.classList.add('hidden');
+            showCarousel();
+          }, 800); 
+        }, 3000);
+      }
+
+      function showCarousel() {
+        carouselContainer.classList.remove('hidden');
+        carouselContainer.classList.add('flex');
+        calculateSlideWidth();
+        startAutoplay();
+      }
+
+      function moveToNextSlide() {
+        currentIndex++;
+        carouselWrapper.style.transition = 'transform 0.5s ease-in-out';
+        centerSlide();
+
+        // When reaching the end of the original slides plus clones
+        if (currentIndex === slides.length) {
+          setTimeout(() => {
+            carouselWrapper.style.transition = 'none';
+            currentIndex = 0; // Jump back to the original first slide without transition
+            centerSlide();
+          }, 500); // Wait for the transition to finish before resetting
+        }
+      }
+
+      function moveToPrevSlide() {
+        currentIndex--;
+        carouselWrapper.style.transition = 'transform 0.5s ease-in-out';
+        centerSlide();
+
+        // When reaching the beginning of the cloned slides
+        if (currentIndex === -1) {
+          setTimeout(() => {
+            carouselWrapper.style.transition = 'none';
+            currentIndex = slides.length - 1; // Jump to the last slide without transition
+            centerSlide();
+          }, 500);
+        }
+      }
+
+      function startAutoplay() {
+        intervalId = setInterval(moveToNextSlide, 3000); // 3-second interval
+      }
+
+      function stopAutoplay() {
+        clearInterval(intervalId);
+      }
+
+      // Initially show the logo for 3 seconds, then show the screen container after 1 second delay
       setTimeout(() => {
-        carouselWrapper.style.transition = 'none';
-        currentIndex = slides.length - 1; // Jump to the last slide without transition
-        centerSlide();
-      }, 500);
-    }
-  }
+        hideLogo();
+        showScreenContainer();
+      }, 3000);
 
-  function startAutoplay() {
-    intervalId = setInterval(moveToNextSlide, 3000); // 3-second interval
-  }
+      // Optional: pause autoplay on hover
+      carouselWrapper.addEventListener('mouseenter', stopAutoplay);
+      carouselWrapper.addEventListener('mouseleave', startAutoplay);
 
-  function stopAutoplay() {
-    clearInterval(intervalId);
-  }
-
-  // Initially show the logo for 3 seconds, then show the screen container after 1 second delay
-  setTimeout(() => {
-    hideLogo();
-    showScreenContainer();
-  }, 3000);
-
-  // Optional: pause autoplay on hover
-  carouselWrapper.addEventListener('mouseenter', stopAutoplay);
-  carouselWrapper.addEventListener('mouseleave', startAutoplay);
-
-  // Recalculate slide width on window resize
-  window.addEventListener('resize', calculateSlideWidth);
-});
+      // Recalculate slide width on window resize
+      window.addEventListener('resize', calculateSlideWidth);
+    });
 
   
   </script>
