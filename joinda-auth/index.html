@@ -22,6 +22,15 @@
           },
           backgroundImage: {
             'slide-primary': "url('./assets/slide1-bg.png')",
+          },
+          keyframes: {
+            "bounce-card": {
+              '0%, 100%': { transform: "translateY(4%)" },
+              '50%': { transform: "translateY(-4%)" },
+            },
+          },
+          animation: {
+            "bounce-card": "bounce-card 3s linear infinite",
           }
         }
       }
@@ -153,7 +162,7 @@
         </button>
       </div>
     </div>
-    <div class="hidden md:flex justify-center items-center w-1/2 bg-[url('./assets/background.png')] bg-center">
+    <div class="hidden md:flex justify-center items-center w-1/2 bg-[url('./assets/background.png')] bg-center bg-cover">
 
       <div id="logo-container" class="flex justify-center items-center w-full h-full">
         <img
@@ -171,7 +180,7 @@
       </div>
       
       <div id="carousel-container" class="hidden relative w-full overflow-hidden">
-        <div class="carousel-wrapper flex gap-8 transition-transform duration-500 ease-in-out max-h-[600px]">
+        <div class="carousel-wrapper flex gap-8 transition-transform duration-500 ease-in-out max-h-[600px] scale-125">
           <!-- Slide 1 -->
           <div class="carousel-slide w-[352px]">
             <div class="flex flex-col bg-[#7F5CE2] bg-slide-primary max-w-[352px] w-[352px] h-full min-h-[522px] rounded-3xl bg-cover">
@@ -203,7 +212,7 @@
                   class="absolute h-full w-full bg-slide-card mix-blend-color-dodge bg-contain bg-center bg-no-repeat"></div>
                 <img draggable={false} src='./assets/carousel/card.webp' width={1056} height={1113}
                   alt="Join in-game purchase screen shot"
-                  class="flex mx-auto h-full w-auto object-scale-down mix-blend-normal animate-bounce-token" />
+                  class="flex mx-auto h-full w-auto object-scale-down mix-blend-normal animate-bounce-card" />
               </div>
             </div>
           </div>
@@ -634,120 +643,113 @@
         }
       });
 
-    document.addEventListener('DOMContentLoaded', () => {
-      const logoContainer = document.getElementById('logo-container');
-      const screenContainer = document.getElementById('screen-container');
-      const carouselContainer = document.getElementById('carousel-container');
-      const carouselWrapper = document.querySelector('.carousel-wrapper');
-      const slides = Array.from(document.querySelectorAll('.carousel-slide'));
-      let currentIndex = 0;
-      let intervalId;
-      let slideWidth;
+      document.addEventListener('DOMContentLoaded', () => {
+          const logoContainer = document.getElementById('logo-container');
+          const screenContainer = document.getElementById('screen-container');
+          const carouselContainer = document.getElementById('carousel-container');
+          const carouselWrapper = document.querySelector('.carousel-wrapper');
+          const slides = Array.from(document.querySelectorAll('.carousel-slide'));
+          let currentIndex = 0;
+          let intervalId;
+          let slideWidth;
 
-      // Clone all slides for looping
-      slides.forEach(slide => {
-        const clone = slide.cloneNode(true);
-        clone.classList.add('clone');
-        carouselWrapper.appendChild(clone);
-      });
-
-      function calculateSlideWidth() {
-        slideWidth = slides[0].clientWidth + 32; // Width plus margin
-        carouselWrapper.style.transition = 'none';
-        centerSlide();
-      }
-
-      function centerSlide() {
-        const offset = (carouselContainer.clientWidth - slideWidth) / 2;
-        carouselWrapper.style.transform = `translateX(${-slideWidth * currentIndex + offset}px)`;
-      }
-
-      function showLogo() {
-        logoContainer.classList.remove('hidden');
-        logoContainer.classList.add('flex');
-      }
-
-      function hideLogo() {
-        logoContainer.classList.remove('flex');
-        logoContainer.classList.add('hidden');
-      }
-
-      function showScreenContainer() {
-        screenContainer.classList.remove('hidden');
-        screenContainer.classList.add('flex', 'scale-in');
-
-        // Fade out and move up after 3 seconds
-        setTimeout(() => {
-          screenContainer.classList.add('fade-out-up');
-
-          setTimeout(() => {
-            screenContainer.classList.remove('flex');
-            screenContainer.classList.add('hidden');
-            showCarousel();
-          }, 800); 
-        }, 3000);
-      }
-
-      function showCarousel() {
-        carouselContainer.classList.remove('hidden');
-        carouselContainer.classList.add('flex');
-        calculateSlideWidth();
-        startAutoplay();
-      }
-
-      function moveToNextSlide() {
-        currentIndex++;
-        carouselWrapper.style.transition = 'transform 0.5s ease-in-out';
-        centerSlide();
-
-        // When reaching the end of the original slides plus clones
-        if (currentIndex === slides.length) {
-          setTimeout(() => {
+          function calculateSlideWidth() {
+            slideWidth = slides[0].clientWidth + 32; // Width plus margin
             carouselWrapper.style.transition = 'none';
-            currentIndex = 0; // Jump back to the original first slide without transition
             centerSlide();
-          }, 500); // Wait for the transition to finish before resetting
-        }
-      }
+          }
 
-      function moveToPrevSlide() {
-        currentIndex--;
-        carouselWrapper.style.transition = 'transform 0.5s ease-in-out';
-        centerSlide();
+          function centerSlide() {
+            const offset = (carouselContainer.clientWidth - slideWidth) / 2;
+            carouselWrapper.style.transform = `translateX(${-slideWidth * currentIndex + offset}px)`;
+          }
 
-        // When reaching the beginning of the cloned slides
-        if (currentIndex === -1) {
+          function showLogo() {
+            logoContainer.classList.remove('hidden');
+            logoContainer.classList.add('flex');
+          }
+
+          function hideLogo() {
+            logoContainer.classList.remove('flex');
+            logoContainer.classList.add('hidden');
+          }
+
+          function showScreenContainer() {
+            screenContainer.classList.remove('hidden');
+            screenContainer.classList.add('flex', 'scale-in');
+
+            // Fade out and scale out after 3 seconds
+            setTimeout(() => {
+              screenContainer.classList.add('scale-out');
+
+              setTimeout(() => {
+                screenContainer.classList.add('fade-out-up');
+
+                setTimeout(() => {
+                  screenContainer.classList.remove('flex', 'scale-in', 'scale-out', 'fade-out-up');
+                  screenContainer.classList.add('hidden');
+                  showCarousel();
+                }, 800); // Wait for fade out to complete
+              }, 500); // Wait for scaling to complete
+            }, 3000); // Initial display duration
+          }
+
+          function showCarousel() {
+            carouselContainer.classList.remove('hidden');
+            carouselContainer.classList.add('flex');
+            calculateSlideWidth();
+            startAutoplay();
+          }
+
+          function hideCarousel() {
+            carouselContainer.classList.remove('flex');
+            carouselContainer.classList.add('hidden');
+          }
+
+          function moveToNextSlide() {
+            currentIndex++;
+            carouselWrapper.style.transition = 'transform 0.5s ease-in-out';
+            centerSlide();
+
+            if (currentIndex === slides.length) {
+              stopAutoplay();
+              setTimeout(() => {
+                currentIndex = 0; // Reset to the first slide
+                centerSlide();
+                hideCarousel();
+                showLogo();
+
+                setTimeout(() => {
+                  hideLogo();
+                  showScreenContainer();
+                }, 3000); // Delay before repeating the cycle
+              }, 500); // Wait for the last slide transition to finish
+            }
+          }
+
+          function startAutoplay() {
+            intervalId = setInterval(moveToNextSlide, 3000); // 3-second interval
+          }
+
+          function stopAutoplay() {
+            clearInterval(intervalId);
+          }
+
+          // Initially show the logo for 3 seconds, then show the screen container after 1 second delay
           setTimeout(() => {
-            carouselWrapper.style.transition = 'none';
-            currentIndex = slides.length - 1; // Jump to the last slide without transition
-            centerSlide();
-          }, 500);
-        }
-      }
+            hideLogo();
+            showScreenContainer();
+          }, 3000);
 
-      function startAutoplay() {
-        intervalId = setInterval(moveToNextSlide, 3000); // 3-second interval
-      }
+          // Optional: pause autoplay on hover
+          carouselWrapper.addEventListener('mouseenter', stopAutoplay);
+          carouselWrapper.addEventListener('mouseleave', startAutoplay);
 
-      function stopAutoplay() {
-        clearInterval(intervalId);
-      }
+          // Recalculate slide width on window resize
+          window.addEventListener('resize', calculateSlideWidth);
+        });
+      
 
-      // Initially show the logo for 3 seconds, then show the screen container after 1 second delay
-      setTimeout(() => {
-        hideLogo();
-        showScreenContainer();
-      }, 3000);
-
-      // Optional: pause autoplay on hover
-      carouselWrapper.addEventListener('mouseenter', stopAutoplay);
-      carouselWrapper.addEventListener('mouseleave', startAutoplay);
-
-      // Recalculate slide width on window resize
-      window.addEventListener('resize', calculateSlideWidth);
-    });
-
-  
   </script>
 
 </body>
