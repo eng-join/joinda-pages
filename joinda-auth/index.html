@@ -174,16 +174,16 @@
       <div id="screen-container" class="hidden justify-center items-center w-full h-full">
         <img
           src="./assets/joinda-screen.png"
-          class="w-auto max-w-[381px] h-auto max-h-[560px] aspect-auto"
+          class="w-auto max-w-[381px] xl:max-w-[400px] 2xl:max-w-[420px] h-auto max-h-[560px] xl:max-h-[620px] aspect-auto"
           alt="Joinda Logo"
         />
       </div>
       
       <div id="carousel-container" class="hidden relative w-full overflow-hidden">
-        <div class="carousel-wrapper flex gap-8 transition-transform duration-500 ease-in-out max-h-[600px] scale-125">
+        <div class="carousel-wrapper flex gap-8 transition-transform duration-500 ease-in-out max-h-[600px] xl:max-h-[680px] scale-125">
           <!-- Slide 1 -->
-          <div class="carousel-slide w-[352px]">
-            <div class="flex flex-col bg-[#7F5CE2] bg-slide-primary max-w-[352px] w-[352px] h-full min-h-[522px] rounded-3xl bg-cover">
+          <div class="carousel-slide w-[352px] xl:w-[400px] 2xl:w-[420px]">
+            <div class="flex flex-col bg-[#7F5CE2] bg-slide-primary w-[352px] xl:w-[400px] 2xl:w-[420px] h-full min-h-[522px] rounded-3xl bg-cover">
               <p class="text-lg text-white p-7">
                 Use <span class="font-bold">JOIN</span> as a secure and transparent
                 <span class="font-bold text-[#89DAD0]">means of exchange</span>
@@ -201,7 +201,7 @@
       
           <!-- Slide 2 -->
           <div class="carousel-slide">
-            <div class="bg-[#030E14] max-w-[352px] w-[352px] h-full min-h-[522px] rounded-3xl px-7 pt-0">
+            <div class="bg-[#030E14] w-[352px] xl:w-[400px] 2xl:w-[420px] h-full min-h-[522px] rounded-3xl px-7 pt-0">
               <p class="text-lg text-white py-7">
                 Introducing our
                 <span class="font-bold text-[#89DAD0]">global</span>
@@ -219,7 +219,7 @@
 
           <!-- Slide 3 -->
           <div class="carousel-slide">
-            <div class="bg-[#030E14] text-white max-w-[352px] w-[352px] h-full min-h-[522px] rounded-3xl p-7 pt-0">
+            <div class="bg-[#030E14] text-white w-[352px] xl:w-[400px] 2xl:w-[420px] h-full min-h-[522px] rounded-3xl p-7 pt-0">
               <div class="flex items-start">
                 <img draggable={false} src='./assets/carousel/pay.webp' width={822} height={1224}
                   alt="Join payment successful screen shot" class="flex mx-auto w-auto h-auto" />
@@ -235,7 +235,7 @@
 
           <!-- Slide 4 -->
           <div class="carousel-slide">
-            <div class="bg-[#030E14] max-w-[352px] w-[352px] h-full min-h-[522px] rounded-3xl p-7 pt-0">
+            <div class="bg-[#030E14] w-[352px] xl:w-[400px] 2xl:w-[420px] h-full min-h-[522px] rounded-3xl p-7 pt-0">
               <div class="flex items-start">
                 <img draggable={false} src='./assets/carousel/rewards.webp' width={810} height={1237}
                   alt="Join rewards screen shot" class="flex mx-auto h-full w-auto object-contain" />
@@ -250,7 +250,7 @@
 
           <!-- Slide 5 -->
           <div class="carousel-slide">
-            <div class="bg-[#030E14] flex flex-col max-w-[352px] w-[352px] h-full min-h-[522px] rounded-3xl px-7 py-0">
+            <div class="bg-[#030E14] flex flex-col w-[352px] xl:w-[400px] 2xl:w-[420px] h-full min-h-[522px] rounded-3xl px-7 py-0">
               <p class="text-lg text-white py-7">
                 <span class="font-bold text-[#89DAD0]">Raise Funds </span>
                 by launching crowdfunding campaigns for your projects.
@@ -689,7 +689,7 @@
                   screenContainer.classList.remove('flex', 'scale-in', 'scale-out', 'fade-out-up');
                   screenContainer.classList.add('hidden');
                   showCarousel();
-                }, 800); // Wait for fade out to complete
+                }, 400); // Wait for fade out to complete
               }, 500); // Wait for scaling to complete
             }, 3000); // Initial display duration
           }
